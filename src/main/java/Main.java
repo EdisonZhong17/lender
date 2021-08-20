@@ -1,9 +1,14 @@
+package lender.src.main.java;
+
 public class Main {
     static int[] amounts = new int[100];
     static String[] borrowers = new String[100];
     static boolean[] isPaid = new boolean[100];
     static double[] interestRates = new double[100];
     static int loansCount = 0;
+    static String[] contactNumbers = new String[100];
+
+    static Loan[] loans = new Loan[100];
 
     public static void addLoan(String borrower, int amount, double interestRate) {
         borrowers[loansCount] = borrower;
@@ -14,8 +19,8 @@ public class Main {
 
     public static void setAsPaid(String borrower) {
         for (int i = 0; i < loansCount; i++) {
-            if (borrowers[i].equals(borrower)) {
-                isPaid[i] = true;
+            if (loans[i].getBorrower().equals(borrower)) {
+                loans[i].setPaid();
             }
         }
     }
